@@ -1,3 +1,6 @@
 - "Choice. The problem is choice"
 - "I don't like the idea that I’m not in control of my life"
 - "I know kung-fu"
+
+# Links
+- Hacker.txt

@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img width="500" src="assets/matrix.png" alt="matrix.png"></img>
+	<img width="500" src="assets/Matrix.png" alt="matrix.png"></img>
 	<br>
 </h1>
 
@@ -13,11 +13,11 @@ The idea is simple. i have bunch of simple `.txt` files in a flat hierarchy stru
 
 to create a graph of links:
 
-`./trinity.sh docs/matrix.txt > /dev/null  2>&1`
+`./trinity.sh docs/Matrix.txt > /dev/null  2>&1`
 
 it will create two files in output directory:
-1. matrix.gv
-2. matrix.png
+1. Matrix.gv
+2. Matrix.png
 
 actually i converted all links that i find inside input file to [dot language](https://en.wikipedia.org/wiki/DOT_(graph_description_language)) and then create an image from it.
 
@@ -49,7 +49,7 @@ graph matrix {
 
 now you can open the image:
 
-`xdg-open output/matrix.png`
+`xdg-open output/Matrix.png > /dev/null 2>&1`
 
 ## dependencies
 - [graphviz](https://graphviz.org/)
