@@ -10,17 +10,13 @@ usage() {
   exit 1
 }
 
-if [ $# -ne 1 ]; then
-  usage
-fi
-
 level=0
-font_size=30
+font_size=0
 input_file=""
 input_dir=""
 output_dir=""
-open_img=false
-remove_gv_file=false
+open_img=0
+remove_gv_file=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -36,12 +32,16 @@ while [[ $# -gt 0 ]]; do
       input_file="$2"
       shift 2
       ;;
+    --font-size)
+      font_size="$2"
+      shift 2
+      ;;
     --remove-gv-file)
-      remove_gv_file=true
+      remove_gv_file=1
       shift
       ;;
     --open-img)
-      open_img=true
+      open_img=1
       shift
       ;;
     --help)
@@ -56,18 +56,18 @@ done
 if [ -d $output_dir ]; then rm -r $output_dir; fi
 mkdir -p $output_dir
 
-input_text=$(cat "$input_file")
-base_name=$(basename "$input_file" .txt)
+input_text=$(cat "$input_dir/$input_file")
+base_name=$(basename "$input_dir/$input_file" .txt)
 gv_file="$output_dir/$base_name.gv"
 
 #=------------- recursive function to generate nodes -------------=#
 print_inner_nodes() {
-  if [ ! -f "${1}.txt" ]; then
-    echo "File: '${1}.txt' not found."
+  if [ ! -f "$input_dir/${1}.txt" ]; then
+    echo "File: '$input_dir${1}.txt' not found."
     exit 1
   else
     local node="$1"
-    local fathers=($(grep -o '\b[a-zA-Z0-9_]*\.txt\b' "${node}.txt" | sed 's/\.txt$//'))
+    local fathers=($(grep -o '\b[a-zA-Z0-9_]*\.txt\b' "$input_dir/${node}.txt" | sed 's/\.txt$//'))
     local fathers_size=${#fathers[@]}
 
     if [ "${fathers_size}" -gt 0 ]; then
@@ -81,7 +81,7 @@ print_inner_nodes() {
       echo "  }" >> "$gv_file"
 
       ((level++))
-      ((font_size -= 5))
+      ((font_size -= 4))
 
       for son in "${fathers[@]}"; do
         print_inner_nodes "$son"
@@ -96,6 +96,10 @@ echo "  layout=sfdp;" >> $gv_file
 echo "  edge [penwidth=5 color=\"#FFCC80\"]" >> $gv_file
 echo "  node [style=\"filled\" penwidth=0 fillcolor=\"#D7CCC8\" fontcolor=\"#424242\"]" >> $gv_file
 
+if [ "${font_size}" -eq "0" ]; then
+  font_size=33
+fi
+
 echo -e "\n  $base_name [fontsize=$font_size]" >> $gv_file
 
 ((level++))
@@ -108,10 +112,10 @@ echo "}" >> $gv_file
 #=------------- generate a .png from .gv file -------------=#
 dot -Tpng $gv_file -o $output_dir/$base_name.png
 
-if [ -n "$remove_gv_file" ]; then
+if [ "${remove_gv_file}" -gt 0 ]; then
   rm $gv_file
 fi
 
-if [ -n "$open_img" ]; then
-  xdg-open $output_dir/$base_name.png
+if [ "${open_img}" -gt 0 ]; then
+  xdg-open $output_dir/$base_name.png > /dev/null 2>&1
 fi

@@ -2,4 +2,5 @@ A hacker is a person skilled in information technology who uses their technical 
 
 # Links
 - RichardStallman.txt
+- LinusTorvalds.txt
 - https://en.wikipedia.org/wiki/Hacker
