@@ -1,0 +1,2 @@
+- in deeper level, if we have more than one child, for every child it should be stay at the same level. but currently, it goes deeper.
+- currently we just follow links until we reach the latest pages. we don't consider exploring other files in each step to see if they have any dependcy to our files or no.

@@ -97,13 +97,13 @@ echo "  edge [penwidth=5 color=\"#FFCC80\"]" >> $gv_file
 echo "  node [style=\"filled\" penwidth=0 fillcolor=\"#D7CCC8\" fontcolor=\"#424242\"]" >> $gv_file
 
 if [ "${font_size}" -eq "0" ]; then
-  font_size=33
+  font_size=34
 fi
 
 echo -e "\n  $base_name [fontsize=$font_size]" >> $gv_file
 
 ((level++))
-((font_size -= 5))
+((font_size -= 4))
 print_inner_nodes $base_name
 
 echo -e "\n  graph [ranksep=$level];" >> $gv_file
