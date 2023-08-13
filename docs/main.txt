@@ -1,6 +1,0 @@
-# test
-this is just a test.
-
-# links
-- l12.txt
-- second.txt

@@ -1,3 +1,5 @@
+*.png
+output/*
 garbage/*
 docs/*.gv
 docs/*.png
