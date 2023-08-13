@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img width="500" src="assets/matrix.png" alt="Trinity">
+	<img width="500" src="assets/matrix.png" alt="matrix.png"></img>
 	<br>
 </h1>
 
@@ -54,7 +54,7 @@ now you can open the image:
 
 ## Who is Trinity
 <h1 align="center">
-	<img width="500" src="assets/trinity.gif" alt="Trinity">
+	<img width="500" src="assets/trinity.gif" alt="trinity.gif">
 	<br>
 </h1>
 
