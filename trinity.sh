@@ -61,4 +61,4 @@ dot -Tpng $gv_file -o output/$base_name.png
 #rm $gv_file
 
 # view it with default image viewer
-xdg-open output/$base_name.png
+#xdg-open output/$base_name.png

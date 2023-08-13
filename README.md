@@ -4,14 +4,15 @@
 </h1>
 
 # Trinity
-Generate link network image from text files.
+Generate images containing links between files.
 
 # Idea
-I developed trinity since i need a tool represent all the links between my files. (i use these linked notes to make a second brain.)
+I developed trinity since i need a tool to show me all the relationships and links between my files. (i use these linked, to make a second brain.)
 
 The idea is simple. i have bunch of simple `.txt` files in a flat hierarchy structure that can refer to each other.(like in **docs** directory)
 
 to create a graph of links:
+
 `./trinity.sh docs/matrix.txt > /dev/null  2>&1`
 
 it will create two files in output directory:
@@ -47,6 +48,7 @@ graph matrix {
 ```
 
 now you can open the image:
+
 `xdg-open output/matrix.png`
 
 ## dependencies
