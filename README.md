@@ -4,7 +4,7 @@
 </h1>
 
 # Trinity
-Generate images containing links between files.
+generating a graph based on links among files.
 
 # Idea
 I developed trinity since i need a tool to show me all the relationships and links between my files. (i use these linked, to make a second brain.)

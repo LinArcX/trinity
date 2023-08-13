@@ -1,6 +1,15 @@
 #!/bin/bash
 usage() {
-  echo "Usage: trinity.sh --directory <DIR> --file <FILE.txt>"
+  echo "trinity.sh: generating a graph based on links among files."
+
+  echo -e "Required:\n\t --input-dir <DIR>: where trinity should looks for files"
+  echo -e "\n\t --output-dir <DIR>: put the final image and `.gv` file here"
+  echo -e "\n\t --input-file <FILE.txt>: trinity will generate links graph based on this file"
+
+  echo -e "Optional:\n\t --remove-gv-file -: remove temporary generated `.gv` file after image generation"
+  echo -e "\n\t --open-img: open the final image with `xdg-open`"
+
+  echo -e "\n\n\t --help: show this help"
   exit 1
 }
 
@@ -26,7 +35,7 @@ while [[ $# -gt 0 ]]; do
       output_dir="$2"
       shift 2
       ;;
-    --file)
+    --input-file)
       input_file="$2"
       shift 2
       ;;
